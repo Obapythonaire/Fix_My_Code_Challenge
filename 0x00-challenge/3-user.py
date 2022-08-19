@@ -14,7 +14,6 @@ class User():
     """
 
     __password = None
-    __id = ""
 
     def __init__(self):
         """
@@ -25,7 +24,6 @@ class User():
 
     @property
     def password(self):
-
         """
         Password getter
         """
@@ -56,7 +54,7 @@ class User():
             return False
         if self.__password is None:
             return False
-        return hashlib.md5(pwd.encode()).hexdigest().upper() == self.__password
+        return hashlib.md5(pwd.encode()).hexdigest().lower() == self.__password
 
 
 if __name__ == '__main__':
@@ -87,7 +85,8 @@ if __name__ == '__main__':
         print("User.password should be None if setter to an integer")
 
     if not user_1.is_valid_password(u_pwd):
-        print("False")
+        print("is_valid_password should return True if it's the right \
+password")
 
     if user_1.is_valid_password("Fakepwd"):
         print("is_valid_password should return False if it's not the right \
